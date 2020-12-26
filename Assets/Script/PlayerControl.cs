@@ -7,8 +7,8 @@ public class PlayerControl : MonoBehaviour
     public float Speed;
     public float JumpNum;
     public int Maxjumpcount;
-
     public int Pice_Meet;
+
     int jumpcount;
     bool isGrounded;
 
@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
 
-        //#region N_Jump
+        #region N_Jump
         //if (isGrounded)
         //{
         //    if (jumpcount > 0)
@@ -46,7 +46,14 @@ public class PlayerControl : MonoBehaviour
         //        }
         //    }
         //}
-        //#endregion
+        #endregion
+
+        if (Pice_Meet == 3)
+        {
+            //recovery
+            Debug.Log("고기조각을 3개 먹었습니다.");
+            Pice_Meet = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -61,9 +68,10 @@ public class PlayerControl : MonoBehaviour
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 0.5f, LayerMask.GetMask("Floor"));
             if (rayhit.collider != null)
             {
-                anim.SetBool("isJump", false);
-                isGrounded = true;
+                Debug.Log(rayhit.collider.name);
                 jumpcount = Maxjumpcount;
+                isGrounded = true;
+                anim.SetBool("isJump", false);
             }
         }
     }
@@ -78,12 +86,14 @@ public class PlayerControl : MonoBehaviour
 
         if (collision.gameObject.tag == "BigFood")
         {
+            //big Recovery
             Debug.Log("큰 음식을 먹었다!");
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "BadFood")
         {
+            //Damage
             Debug.Log("안좋은 음식을 먹었다!");
             Destroy(collision.gameObject);
         }
