@@ -10,7 +10,14 @@ public class Floor : MonoBehaviour
     public int endIndex;
     public Transform[] sprites;
 
-    float viewHeight;
+    int maxIndex;
+    int minIndex;
+
+    private void Awake()
+    {
+        maxIndex = startIndex;
+        minIndex = endIndex;
+    }
 
     private void Update()
     {
@@ -19,15 +26,29 @@ public class Floor : MonoBehaviour
         Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
-        if (sprites[endIndex].position.x > checkNum*(-1))
+        if (sprites[endIndex].position.x < checkNum*(-1))
         {
             Vector3 backSpritePos = sprites[startIndex].localPosition;
             Vector3 frontSpritePos = sprites[endIndex].localPosition;
-            sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * checkNum;
+            sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right;
 
-            int startIndexNum = startIndex;
-            startIndex = endIndex;
-            endIndex = (startIndexNum - 1 == -1) ? sprites.Length - 1 : startIndexNum - 1;
+            checkIndex();
         }
+    }
+
+    void checkIndex()
+    {
+        //10 0, 0 1, 1 2, 2 3, 3 4, 4 5, 5 6, 6 7, 7 8, 8 9, 9 10, 10 0
+        int startIndexNum = startIndex;
+        startIndex = endIndex;
+
+        if (startIndexNum == maxIndex)
+            endIndex = minIndex + 1;
+        else if (startIndexNum == minIndex)
+            endIndex = minIndex + 2;
+        else if (startIndex == maxIndex)
+            endIndex = minIndex;
+        else
+            endIndex = startIndex + 1;
     }
 }

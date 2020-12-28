@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class PlayerControl : MonoBehaviour
     public float JumpNum;
     public int Maxjumpcount;
     public int Pice_Meet;
+    public Text scoreText;
 
+    int score;
     int jumpcount;
     bool isGrounded;
 
@@ -19,7 +22,8 @@ public class PlayerControl : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        jumpcount = Pice_Meet = 0;
+        jumpcount = Pice_Meet = score = 0;
+        scoreText.text = score.ToString();
         isGrounded = false;
     }
 
@@ -52,15 +56,13 @@ public class PlayerControl : MonoBehaviour
         {
             //recovery
             Debug.Log("고기조각을 3개 먹었습니다.");
+            ScoreAdd(200);
             Pice_Meet = 0;
         }
     }
 
     private void FixedUpdate()
     {
-        //Move
-        rigid.velocity = new Vector2(Speed, rigid.velocity.y);
-
         //Jump
         if (rigid.velocity.y < 0)
         {
@@ -68,7 +70,6 @@ public class PlayerControl : MonoBehaviour
             RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 0.5f, LayerMask.GetMask("Floor"));
             if (rayhit.collider != null)
             {
-                Debug.Log(rayhit.collider.name);
                 jumpcount = Maxjumpcount;
                 isGrounded = true;
                 anim.SetBool("isJump", false);
@@ -76,8 +77,19 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    void ScoreAdd(int num)
+    {
+        score += num;
+        scoreText.text = score.ToString();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(rigid.velocity.y < 0 && transform.position.y > collision.transform.position.y)
+        {
+            collision.isTrigger = false;
+        }
+
         if (collision.gameObject.tag == "PiceMeet")
         {
             Pice_Meet++;
@@ -95,6 +107,12 @@ public class PlayerControl : MonoBehaviour
         {
             //Damage
             Debug.Log("안좋은 음식을 먹었다!");
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Jelly")
+        {
+            ScoreAdd(100);
             Destroy(collision.gameObject);
         }
     }

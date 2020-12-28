@@ -16,14 +16,14 @@ public class BackGroundScroll : MonoBehaviour
     {
         //move
         Vector3 curPos = transform.position;
-        Vector3 nextPos = Vector3.right * speed * Time.deltaTime;
+        Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
-        if (sprites[endIndex].position.x > checkNum)
+        if (sprites[endIndex].position.x < checkNum*(-1))
         {
             Vector3 backSpritePos = sprites[startIndex].localPosition;
             Vector3 frontSpritePos = sprites[endIndex].localPosition;
-            sprites[endIndex].transform.localPosition = backSpritePos + Vector3.left * checkNum;
+            sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * checkNum;
 
             int startIndexNum = startIndex;
             startIndex = endIndex;

@@ -63,8 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BackGroundScroll.cs" />
-    <Compile Include="Assets\Script\CameraControl.cs" />
     <Compile Include="Assets\Script\Floor.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\PlayerControl.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity/2019.4.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
