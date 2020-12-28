@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,8 @@ public class PlayerControl : MonoBehaviour
     public float JumpNum;
     public int Maxjumpcount;
     public int Pice_Meet;
-    public Text scoreText;
 
-    int score;
+
     int jumpcount;
     bool isGrounded;
 
@@ -22,8 +22,8 @@ public class PlayerControl : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        jumpcount = Pice_Meet = score = 0;
-        scoreText.text = score.ToString();
+        jumpcount = Pice_Meet = 0;
+        
         isGrounded = false;
     }
 
@@ -52,13 +52,7 @@ public class PlayerControl : MonoBehaviour
         //}
         #endregion
 
-        if (Pice_Meet == 3)
-        {
-            //recovery
-            Debug.Log("고기조각을 3개 먹었습니다.");
-            ScoreAdd(200);
-            Pice_Meet = 0;
-        }
+        GameManager.instance.checkHealth();
     }
 
     private void FixedUpdate()
@@ -77,12 +71,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void ScoreAdd(int num)
-    {
-        score += num;
-        scoreText.text = score.ToString();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(rigid.velocity.y < 0 && transform.position.y > collision.transform.position.y)
@@ -90,30 +78,28 @@ public class PlayerControl : MonoBehaviour
             collision.isTrigger = false;
         }
 
-        if (collision.gameObject.tag == "PiceMeet")
+        switch (collision.gameObject.tag)
         {
-            Pice_Meet++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.tag == "BigFood")
-        {
-            //big Recovery
-            Debug.Log("큰 음식을 먹었다!");
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.tag == "BadFood")
-        {
-            //Damage
-            Debug.Log("안좋은 음식을 먹었다!");
-            Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "Jelly")
-        {
-            ScoreAdd(100);
-            Destroy(collision.gameObject);
+            case "PiceMeet":
+                GameManager.instance.AddPiceMeet();
+                Destroy(collision.gameObject);
+                break;
+            case "BigFood":
+                GameManager.instance.AddHealth(10);
+                Destroy(collision.gameObject);
+                break;
+            case "BadFood":
+                //Damage
+                Debug.Log("안좋은 음식을 먹었다!");
+                GameManager.instance.DamagePoision(15);
+                Destroy(collision.gameObject);
+                break;
+            case "Jelly":
+                GameManager.instance.ScoreAdd(100);
+                Destroy(collision.gameObject);
+                break;
+            default:
+                break;
         }
     }
 }
