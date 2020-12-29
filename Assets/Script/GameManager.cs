@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float speed;
-    public float timenum;
-    public float MaxHealth;
-    public int picemeetCount;
-    public Image healthBar;
-    public Text scoreText;
-    public Text PiceMeetText;
+    public float speed;         //장애물이 움직이는 속도
+    public float hpreduceNum;   //체력이 다는 속도
+    public float MaxHealth;     //최대 체력
+    public int MaxmeetCount;    //최대로 먹을 수 있는 고기 조각
+    public Image healthBar;     //체력바
+    public Text scoreText;      //점수텍스트
+    public Text PiceMeetText;   //먹은 고기 조각 텍스트
 
-
-    int MaxmeetCount;
     int score;
-    float health;
+    int picemeetCount;  //현재 먹은 고기 조각
+    float health;       //현재 체력
+    float savehpredNum; //저장된 체력이 다는 속도
+
+    GameObject Player;
 
     #region SingleTon
     public static GameManager instance;
@@ -28,8 +30,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        Player = GameObject.Find("Player");
         health = MaxHealth;
-        score = picemeetCount = 0;  MaxmeetCount = 3;
+        savehpredNum = hpreduceNum;
+        score = picemeetCount = 0;
         scoreText.text = score.ToString();
         PiceMeetText.text = picemeetCount.ToString() + " / " + MaxmeetCount.ToString();
     }
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         Vector3 curPos = transform.position;
         Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
+
+        checkHealth();
     }
 
     public void AddPiceMeet()
@@ -67,11 +74,9 @@ public class GameManager : MonoBehaviour
 
     public void checkHealth()
     {
-        #region time.deltatime reduction
         //time.deltatime
-        health -= Time.deltaTime * timenum;
+        health -= Time.deltaTime * hpreduceNum;
         healthBar.fillAmount = health / 100f;
-        #endregion
     }
 
     public void AddHealth(int index)
@@ -82,19 +87,41 @@ public class GameManager : MonoBehaviour
             health += index;
     }
 
-    public void DamagePoision(int index)
+    #region Damage
+    public void OnDamage(int index, GameObject obj)
     {
         if (health < 0)
             return;
 
-       health -= index;
-       float idx = timenum;
-       timenum *= 3;
-       healthBar.color = new Color(100, 0, 255);
-       //if (Time.time > 3.0f)
-       //{
-       //     timenum = idx;
-       //     healthBar.color = new Color(255,255,255);
-       //}
+        Player.layer = 10;
+        Player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
+        health -= index;
+
+        if (obj.tag == "BadFood")
+        {
+            OnPoison();
+            Invoke("OffPoison", 5.0f);
+        }
+
+        Invoke("OffDamage", 2.0f);
     }
+
+    void OffDamage()
+    {
+        Player.layer = 9;
+        Player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void OnPoison()
+    {
+        hpreduceNum *= 2;
+        healthBar.color = new Color(100 / 255f, 255 / 255f, 255 / 255f);
+    }
+
+    void OffPoison()
+    {
+        hpreduceNum = savehpredNum;
+        healthBar.color = new Color(1, 1, 1);
+    } 
+    #endregion
 }

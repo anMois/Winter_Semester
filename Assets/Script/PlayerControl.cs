@@ -11,7 +11,6 @@ public class PlayerControl : MonoBehaviour
     public int Maxjumpcount;
     public int Pice_Meet;
 
-
     int jumpcount;
     bool isGrounded;
 
@@ -51,8 +50,6 @@ public class PlayerControl : MonoBehaviour
         //    }
         //}
         #endregion
-
-        GameManager.instance.checkHealth();
     }
 
     private void FixedUpdate()
@@ -88,15 +85,18 @@ public class PlayerControl : MonoBehaviour
                 GameManager.instance.AddHealth(10);
                 Destroy(collision.gameObject);
                 break;
-            case "BadFood":
-                //Damage
-                Debug.Log("안좋은 음식을 먹었다!");
-                GameManager.instance.DamagePoision(15);
-                Destroy(collision.gameObject);
-                break;
             case "Jelly":
                 GameManager.instance.ScoreAdd(100);
                 Destroy(collision.gameObject);
+                break;
+            case "BadFood":
+                //Damage
+                Debug.Log("안좋은 음식을 먹었다!");
+                GameManager.instance.OnDamage(15, collision.gameObject);
+                Destroy(collision.gameObject);
+                break;
+            case "Enemy":
+                GameManager.instance.OnDamage(10, collision.gameObject);
                 break;
             default:
                 break;
