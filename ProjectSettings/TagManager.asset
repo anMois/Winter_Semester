@@ -19,12 +19,12 @@ TagManager:
   - 
   - 
   - Floor
-  - Player
-  - PlayerDamaged
   - Enemy
   - 
   - 
-  - 
+  - Player
+  - PlayerDamaged
+  - PlayerAbility
   - 
   - 
   - 

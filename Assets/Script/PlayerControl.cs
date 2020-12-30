@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float Speed;
     public float JumpNum;
+    public float abilityNum;
     public int Maxjumpcount;
-    public int Pice_Meet;
+    public Image AbilityBar;
 
+    float dtime;
+    float ability;
     int jumpcount;
     bool isGrounded;
+    bool isAbility;
 
     Rigidbody2D rigid;
     Animator anim;
@@ -21,18 +24,18 @@ public class PlayerControl : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        jumpcount = Pice_Meet = 0;
-        
-        isGrounded = false;
+        jumpcount =  0;  ability = 0f;
+        isGrounded = isAbility = false;
     }
 
     private void Update()
     {
+        checkAbility();
+
         #region Normal_Jump
-        if (Input.GetButtonDown("Jump") && !anim.GetBool("isJump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            rigid.AddForce(Vector2.up * JumpNum, ForceMode2D.Impulse);
-            anim.SetBool("isJump", true);
+            OnJump();
         }
         #endregion
 
@@ -43,8 +46,7 @@ public class PlayerControl : MonoBehaviour
         //    {
         //        if (Input.GetButtonDown("Jump"))
         //        {
-        //            rigid.AddForce(Vector2.up * JumpNum, ForceMode2D.Impulse);
-        //            anim.SetBool("isJump", true);
+        //            OnJump();
         //            jumpcount--;
         //        }
         //    }
@@ -65,6 +67,51 @@ public class PlayerControl : MonoBehaviour
                 isGrounded = true;
                 anim.SetBool("isJump", false);
             }
+        }
+    }
+
+    void checkAbility()
+    {
+        dtime += Time.deltaTime;
+
+        if (isAbility)
+        {
+            if (dtime < 2f)
+                return;
+
+            ability -= Time.deltaTime * abilityNum;
+            AbilityBar.fillAmount = ability / 100f;
+            isAbility = (AbilityBar.fillAmount <= 0) ? false : true;
+            if (!isAbility)
+            {
+                gameObject.transform.Find("Brace").gameObject.SetActive(false);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
+                dtime = 0;
+            }
+        }
+        else
+        {
+            if (dtime < 2f)
+                return;
+
+            ability += Time.deltaTime * abilityNum;
+            AbilityBar.fillAmount = ability / 100f;
+            isAbility = (AbilityBar.fillAmount == 1) ? true : false;
+            if (isAbility)
+            {
+                gameObject.layer = LayerMask.NameToLayer("PlayerAbility");
+                gameObject.transform.Find("Brace").gameObject.SetActive(true);
+                dtime = 0;
+            }
+        }
+    }
+
+    public void OnJump()
+    {
+        if (!anim.GetBool("isJump"))
+        {
+            rigid.AddForce(Vector2.up * JumpNum, ForceMode2D.Impulse);
+            anim.SetBool("isJump", true);
         }
     }
 
@@ -96,9 +143,18 @@ public class PlayerControl : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
-                GameManager.instance.OnDamage(10, collision.gameObject);
+                if (gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    GameManager.instance.OnDamage(10, collision.gameObject);
+                }
+                else
+                {
+                    GameManager.instance.ScoreAdd(100);
+                    Destroy(collision.gameObject);
+                }
                 break;
             default:
+                //gameObject.layer = LayerMask.NameToLayer("Player");
                 break;
         }
     }

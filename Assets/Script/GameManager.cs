@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public float speed;         //장애물이 움직이는 속도
+    public float F_Speed;       //바닥 움직이는 속도
     public float hpreduceNum;   //체력이 다는 속도
     public float MaxHealth;     //최대 체력
     public int MaxmeetCount;    //최대로 먹을 수 있는 고기 조각
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        Player = GameObject.Find("Player");
+        Player = GameObject.Find("Player").gameObject;
         health = MaxHealth;
         savehpredNum = hpreduceNum;
         score = picemeetCount = 0;
@@ -93,22 +94,19 @@ public class GameManager : MonoBehaviour
         if (health < 0)
             return;
 
-        Player.layer = 10;
+        Player.layer = LayerMask.NameToLayer("PlayerDamaged");
         Player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
         health -= index;
 
         if (obj.tag == "BadFood")
-        {
             OnPoison();
-            Invoke("OffPoison", 5.0f);
-        }
 
-        Invoke("OffDamage", 2.0f);
+        Invoke("OnPlayerMode", 2.0f);
     }
 
-    void OffDamage()
+    public void OnPlayerMode()
     {
-        Player.layer = 9;
+        Player.layer = LayerMask.NameToLayer("Player");
         Player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
@@ -116,6 +114,8 @@ public class GameManager : MonoBehaviour
     {
         hpreduceNum *= 2;
         healthBar.color = new Color(100 / 255f, 255 / 255f, 255 / 255f);
+
+        Invoke("OffPoison", 5.0f);
     }
 
     void OffPoison()

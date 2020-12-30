@@ -10,8 +10,6 @@ public class BackGroundScroll : MonoBehaviour
     public int endIndex;
     public Transform[] sprites;
 
-    float viewHeight;
-
     private void Update()
     {
         //move
