@@ -86,6 +86,7 @@ public class PlayerControl : MonoBehaviour
             {
                 gameObject.transform.Find("Brace").gameObject.SetActive(false);
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
+                Invoke("OnPlayerMode", 2f);
                 dtime = 0;
             }
         }
@@ -104,6 +105,11 @@ public class PlayerControl : MonoBehaviour
                 dtime = 0;
             }
         }
+    }
+
+    void OnPlayerMode()
+    {
+        GameManager.instance.OnPlayerMode();
     }
 
     public void OnJump()

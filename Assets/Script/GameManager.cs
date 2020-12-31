@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Image healthBar;     //체력바
     public Text scoreText;      //점수텍스트
     public Text PiceMeetText;   //먹은 고기 조각 텍스트
+    public Button DashBtn;
 
     int score;
     int picemeetCount;  //현재 먹은 고기 조각
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     float savehpredNum; //저장된 체력이 다는 속도
 
     GameObject Player;
+    public BackGroundScroll background01;
+    public BackGroundScroll background02;
 
     #region SingleTon
     public static GameManager instance;
@@ -84,8 +87,27 @@ public class GameManager : MonoBehaviour
     {
         if (health == MaxHealth)
             return;
+        else if ((health += index) > MaxHealth)
+            DashBtn.interactable = true;
         else
             health += index;
+    }
+
+    public void OnDashBtn()
+    {
+        speed *= 2; F_Speed *= 2;
+        background01.speed *= 2;
+        background02.speed *= 2;
+
+        Invoke("OffDashBtn", 5f);
+        DashBtn.interactable = false;
+    }
+
+    void OffDashBtn()
+    {
+        speed /= 2; F_Speed /= 2;
+        background01.speed /= 2;
+        background02.speed /= 2;
     }
 
     #region Damage
