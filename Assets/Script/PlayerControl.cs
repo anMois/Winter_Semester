@@ -85,7 +85,7 @@ public class PlayerControl : MonoBehaviour
             if (!isAbility)
             {
                 gameObject.transform.Find("Brace").gameObject.SetActive(false);
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 110/255f);
                 Invoke("OnPlayerMode", 2f);
                 dtime = 0;
             }
@@ -160,7 +160,6 @@ public class PlayerControl : MonoBehaviour
                 }
                 break;
             default:
-                //gameObject.layer = LayerMask.NameToLayer("Player");
                 break;
         }
     }

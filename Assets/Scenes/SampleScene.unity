@@ -724,7 +724,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4710,7 +4710,7 @@ MonoBehaviour:
   speed: 2
   F_Speed: 2
   hpreduceNum: 3
-  MaxHealth: 50
+  MaxHealth: 100
   MaxmeetCount: 3
   healthBar: {fileID: 79286027}
   scoreText: {fileID: 2000452409}
@@ -5071,7 +5071,7 @@ GameObject:
   - component: {fileID: 1988986143}
   - component: {fileID: 1988986145}
   - component: {fileID: 1988986144}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Brace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
