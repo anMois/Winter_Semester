@@ -32,6 +32,8 @@ public class PlayerControl : MonoBehaviour
     {
         checkAbility();
 
+        #region Jump&Dash
+        //Jump
         #region Normal_Jump
         if (Input.GetButtonDown("Jump"))
         {
@@ -52,6 +54,14 @@ public class PlayerControl : MonoBehaviour
         //    }
         //}
         #endregion
+
+        //Dash
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            GameManager.instance.OnDashBtn();
+        }
+        #endregion
+        
     }
 
     private void FixedUpdate()

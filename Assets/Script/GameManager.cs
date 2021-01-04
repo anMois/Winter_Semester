@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public float speed;         //장애물이 움직이는 속도
-    public float F_Speed;       //바닥 움직이는 속도
     public float hpreduceNum;   //체력이 다는 속도
     public float MaxHealth;     //최대 체력
     public int MaxmeetCount;    //최대로 먹을 수 있는 고기 조각
@@ -21,8 +20,8 @@ public class GameManager : MonoBehaviour
     float savehpredNum; //저장된 체력이 다는 속도
 
     GameObject Player;
-    public BackGroundScroll background01;
-    public BackGroundScroll background02;
+    public ImageScroll background01;
+    public ImageScroll F_Speed;
 
     #region SingleTon
     public static GameManager instance;
@@ -95,9 +94,9 @@ public class GameManager : MonoBehaviour
 
     public void OnDashBtn()
     {
-        speed *= 2; F_Speed *= 2;
+        speed *= 2;
+        F_Speed.speed *= 2;
         background01.speed *= 2;
-        background02.speed *= 2;
 
         Invoke("OffDashBtn", 5f);
         DashBtn.interactable = false;
@@ -105,9 +104,9 @@ public class GameManager : MonoBehaviour
 
     void OffDashBtn()
     {
-        speed /= 2; F_Speed /= 2;
+        speed /= 2;
+        F_Speed.speed /= 2;
         background01.speed /= 2;
-        background02.speed /= 2;
     }
 
     #region Damage

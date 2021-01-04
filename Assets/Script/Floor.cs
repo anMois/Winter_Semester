@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    public float speed;
     public float checkNum;
     public int startIndex;
     public int endIndex;
@@ -22,7 +23,7 @@ public class Floor : MonoBehaviour
     {
         //move
         Vector3 curPos = transform.position;
-        Vector3 nextPos = Vector3.left * GameManager.instance.F_Speed * Time.deltaTime;
+        Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
         if (sprites[endIndex].position.x < checkNum*(-1))
