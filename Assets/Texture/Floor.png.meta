@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8441213473822645377
-    second: "\uBC30\uACBD \uB9E8\uC55E_0"
+    second: Floor_0
   - first:
       213: -2314053704301756226
     second: "\uBC30\uACBD \uB9E8\uC55E_1"
@@ -9717,15 +9717,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uBC30\uACBD \uB9E8\uC55E_0"
+      name: Floor_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 111
         y: 0
-        width: 1920
+        width: 1809
         height: 425
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

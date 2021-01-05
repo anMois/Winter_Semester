@@ -3,8 +3,8 @@ guid: 96b0042d59bf8cc4a9a385b5d1dc56ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5571037973267669752
-    second: "\uD070 \uACE0\uAE30_0"
+      213: -5711882945626674858
+    second: Big_Meet_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -90,12 +90,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD070 \uACE0\uAE30_0"
+      name: Big_Meet_0
       rect:
         serializedVersion: 2
-        x: 813
+        x: 815
         y: 477
-        width: 264
+        width: 262
         height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -104,8 +104,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f2e4d2258d405d40800000000000000
-      internalID: 5571037973267669752
+      spriteID: 6596f4b49b05bb0b0800000000000000
+      internalID: -5711882945626674858
       vertices: []
       indices: 
       edges: []

@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour
     float savehpredNum; //저장된 체력이 다는 속도
 
     GameObject Player;
-    public ImageScroll background01;
+    public ImageScroll Sky_Speed;
     public ImageScroll F_Speed;
+    public ImageScroll Mountain_Speed;
+    public ImagesScroll Cloude_Speed;
+    public ImagesScroll Pillar_Speed;
+
+    private ImageScroll ScrollSpeed;
 
     #region SingleTon
     public static GameManager instance;
@@ -34,14 +39,20 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
+        ScrollSpeed = GetComponent<ImageScroll>();
         Player = GameObject.Find("Player").gameObject;
         health = MaxHealth;
         savehpredNum = hpreduceNum;
+
+    }
+    #endregion
+
+    private void Start()
+    {
         score = picemeetCount = 0;
         scoreText.text = score.ToString();
         PiceMeetText.text = picemeetCount.ToString() + " / " + MaxmeetCount.ToString();
     }
-    #endregion
 
     private void Update()
     {
@@ -53,6 +64,22 @@ public class GameManager : MonoBehaviour
         checkHealth();
     }
 
+    //점수 획득
+    public void ScoreAdd(int num)
+    {
+        score += num;
+        scoreText.text = score.ToString();
+    }
+
+    #region Health
+    public void checkHealth()
+    {
+        //time.deltatime
+        health -= Time.deltaTime * hpreduceNum;
+        healthBar.fillAmount = health / 100f;
+    }
+
+    //고기조각 획득
     public void AddPiceMeet()
     {
         picemeetCount++;
@@ -69,19 +96,7 @@ public class GameManager : MonoBehaviour
         PiceMeetText.text = picemeetCount.ToString() + " / " + MaxmeetCount.ToString();
     }
 
-    public void ScoreAdd(int num)
-    {
-        score += num;
-        scoreText.text = score.ToString();
-    }
-
-    public void checkHealth()
-    {
-        //time.deltatime
-        health -= Time.deltaTime * hpreduceNum;
-        healthBar.fillAmount = health / 100f;
-    }
-
+    //체력 회복
     public void AddHealth(int index)
     {
         if (health == MaxHealth)
@@ -91,25 +106,37 @@ public class GameManager : MonoBehaviour
         else
             health += index;
     }
+    #endregion
 
+    #region Dash
+    //대쉬버튼을 눌렀을 때
     public void OnDashBtn()
     {
         speed *= 2;
         F_Speed.speed *= 2;
-        background01.speed *= 2;
+        Sky_Speed.speed *= 2;
+        Mountain_Speed.speed *= 2;
+        Cloude_Speed.speed *= 2;
+        Pillar_Speed.speed *= 2;
 
         Invoke("OffDashBtn", 5f);
         DashBtn.interactable = false;
     }
 
+    //대쉬 시간이 지난후
     void OffDashBtn()
     {
         speed /= 2;
         F_Speed.speed /= 2;
-        background01.speed /= 2;
+        Sky_Speed.speed /= 2;
+        Mountain_Speed.speed /= 2;
+        Cloude_Speed.speed /= 2;
+        Pillar_Speed.speed /= 2;
     }
+    #endregion
 
     #region Damage
+    //충돌
     public void OnDamage(int index, GameObject obj)
     {
         if (health < 0)
@@ -131,6 +158,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
+    //독고기조각을 부딪쳤을 때
     void OnPoison()
     {
         hpreduceNum *= 2;
@@ -138,7 +166,7 @@ public class GameManager : MonoBehaviour
 
         Invoke("OffPoison", 5.0f);
     }
-
+    //끝나고 원상복귀
     void OffPoison()
     {
         hpreduceNum = savehpredNum;

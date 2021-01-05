@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     private void Update()
     {
         checkAbility();
-
+        Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
         #region Jump&Dash
         //Jump
         #region Normal_Jump
@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
-            RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 0.5f, LayerMask.GetMask("Floor"));
+            RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 2f, LayerMask.GetMask("Floor"));
             if (rayhit.collider != null)
             {
                 jumpcount = Maxjumpcount;
