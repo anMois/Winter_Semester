@@ -14,19 +14,20 @@ public class GameManager : MonoBehaviour
     public Text PiceMeetText;   //먹은 고기 조각 텍스트
     public Button DashBtn;
 
+    public ImageScroll Sky_Speed;       //배경
+    public ImageScroll F_Speed;         //바닥
+    public ImageScroll Mountain_Speed;  //산
+    public ImagesScroll Cloude_Speed;   //구름
+    public ImagesScroll Pillar_Speed;   //기둥
+    public GameObject DashParticle;
+
     int score;
     int picemeetCount;  //현재 먹은 고기 조각
     float health;       //현재 체력
     float savehpredNum; //저장된 체력이 다는 속도
+    bool isRunnig;
 
     GameObject Player;
-    public ImageScroll Sky_Speed;
-    public ImageScroll F_Speed;
-    public ImageScroll Mountain_Speed;
-    public ImagesScroll Cloude_Speed;
-    public ImagesScroll Pillar_Speed;
-
-    private ImageScroll ScrollSpeed;
 
     #region SingleTon
     public static GameManager instance;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
 
-        ScrollSpeed = GetComponent<ImageScroll>();
+        isRunnig = false;
         Player = GameObject.Find("Player").gameObject;
         health = MaxHealth;
         savehpredNum = hpreduceNum;
@@ -99,12 +100,16 @@ public class GameManager : MonoBehaviour
     //체력 회복
     public void AddHealth(int index)
     {
-        if (health == MaxHealth)
-            return;
-        else if ((health += index) > MaxHealth)
+        health += index;
+
+        if (health >= MaxHealth)
+        {
+            if (health >= (MaxHealth + 20))
+                health = (MaxHealth + 20);
+
             DashBtn.interactable = true;
-        else
-            health += index;
+            Debug.Log(health);
+        }
     }
     #endregion
 
@@ -112,12 +117,17 @@ public class GameManager : MonoBehaviour
     //대쉬버튼을 눌렀을 때
     public void OnDashBtn()
     {
+        if (isRunnig)
+            return;
+
         speed *= 2;
         F_Speed.speed *= 2;
         Sky_Speed.speed *= 2;
         Mountain_Speed.speed *= 2;
         Cloude_Speed.speed *= 2;
         Pillar_Speed.speed *= 2;
+        DashParticle.SetActive(true);
+        isRunnig = true;
 
         Invoke("OffDashBtn", 5f);
         DashBtn.interactable = false;
@@ -132,6 +142,8 @@ public class GameManager : MonoBehaviour
         Mountain_Speed.speed /= 2;
         Cloude_Speed.speed /= 2;
         Pillar_Speed.speed /= 2;
+        DashParticle.SetActive(false);
+        isRunnig = false;
     }
     #endregion
 

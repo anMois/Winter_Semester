@@ -19,11 +19,13 @@ public class PlayerControl : MonoBehaviour
 
     Rigidbody2D rigid;
     Animator anim;
+    Animator braceAnim;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        braceAnim = gameObject.transform.Find("Brace").GetComponent<Animator>();
         jumpcount =  0;  ability = 0f;
         isGrounded = isAbility = false;
     }
@@ -94,9 +96,13 @@ public class PlayerControl : MonoBehaviour
             isAbility = (AbilityBar.fillAmount <= 0) ? false : true;
             if (!isAbility)
             {
+                braceAnim.SetBool("isBrace", false);
+                anim.SetBool("isAttack", false);
                 gameObject.transform.Find("Brace").gameObject.SetActive(false);
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 110/255f);
+
                 Invoke("OnPlayerMode", 2f);
+
                 dtime = 0;
             }
         }
@@ -111,7 +117,10 @@ public class PlayerControl : MonoBehaviour
             if (isAbility)
             {
                 gameObject.layer = LayerMask.NameToLayer("PlayerAbility");
+                anim.SetBool("isAttack", true);
                 gameObject.transform.Find("Brace").gameObject.SetActive(true);
+                braceAnim.SetBool("isBrace", true);
+
                 dtime = 0;
             }
         }
@@ -142,21 +151,26 @@ public class PlayerControl : MonoBehaviour
         {
             case "PiceMeet":
                 GameManager.instance.AddPiceMeet();
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
                 break;
             case "BigFood":
-                GameManager.instance.AddHealth(10);
-                Destroy(collision.gameObject);
+                GameManager.instance.AddHealth(20);
+                GameManager.instance.ScoreAdd(300);
+                //Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
                 break;
             case "Jelly":
                 GameManager.instance.ScoreAdd(100);
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
                 break;
             case "BadFood":
                 //Damage
                 Debug.Log("안좋은 음식을 먹었다!");
                 GameManager.instance.OnDamage(15, collision.gameObject);
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
                 break;
             case "Enemy":
                 if (gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -166,7 +180,8 @@ public class PlayerControl : MonoBehaviour
                 else
                 {
                     GameManager.instance.ScoreAdd(100);
-                    Destroy(collision.gameObject);
+                    //Destroy(collision.gameObject);
+                    collision.gameObject.SetActive(false);
                 }
                 break;
             default:

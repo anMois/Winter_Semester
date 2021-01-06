@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: e0fce2bd175858043a10fd5c553ee6d7
+guid: 45930f2b461567a4b824890502212afc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2947608726022907911
+      213: -2465080100678650304
     second: Poision_Meet_0
   externalObjects: {}
   serializedVersion: 11
@@ -93,19 +93,19 @@ TextureImporter:
       name: Poision_Meet_0
       rect:
         serializedVersion: 2
-        x: 1135
-        y: 487
+        x: 27
+        y: 49
         width: 141
         height: 132
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 708ef6be48208e820800000000000000
-      internalID: 2947608726022907911
+      spriteID: 0463a2085b64acdd0800000000000000
+      internalID: -2465080100678650304
       vertices: []
       indices: 
       edges: []

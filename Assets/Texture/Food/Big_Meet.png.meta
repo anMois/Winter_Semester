@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 96b0042d59bf8cc4a9a385b5d1dc56ac
+guid: 4e01c4a810035e34087baed6ba1ee6fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5711882945626674858
+      213: -5553780504158539487
     second: Big_Meet_0
   externalObjects: {}
   serializedVersion: 11
@@ -93,19 +93,19 @@ TextureImporter:
       name: Big_Meet_0
       rect:
         serializedVersion: 2
-        x: 815
-        y: 477
+        x: 55
+        y: 49
         width: 262
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6596f4b49b05bb0b0800000000000000
-      internalID: -5711882945626674858
+      spriteID: 121f3218e020de2b0800000000000000
+      internalID: -5553780504158539487
       vertices: []
       indices: 
       edges: []

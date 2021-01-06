@@ -35,7 +35,7 @@ public class ImagesScroll : MonoBehaviour
                 sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * (checkNum / 2.0f);
             else
                 sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * checkNum;
-
+            
             checkIndex();
         }
     }

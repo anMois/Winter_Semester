@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 5683f22c750252741bd3141de2d3cd82
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8901863861514523087
+    second: Broken_Chandelier_0
+  - first:
+      213: 1700520543104143984
+    second: Broken_Chandelier_1
+  - first:
+      213: 5422270003503818161
+    second: Broken_Chandelier_2
+  - first:
+      213: -3568163140651642601
+    second: Broken_Chandelier_1
+  - first:
+      213: -7909585808525431757
+    second: Broken_Chandelier_2
+  - first:
+      213: -3431897304777858434
+    second: Broken_Chandelier_3
+  - first:
+      213: 2873145149015666009
+    second: Broken_Chandelier_4
+  - first:
+      213: -5380672109636673107
+    second: Broken_Chandelier_5
+  - first:
+      213: 6228995836570304270
+    second: Broken_Chandelier_6
+  - first:
+      213: 3112329037700553374
+    second: Broken_Chandelier_7
+  - first:
+      213: 6016965672174085218
+    second: Broken_Chandelier_8
+  - first:
+      213: 7751969685543456391
+    second: Broken_Chandelier_9
+  - first:
+      213: -666943135657015341
+    second: Broken_Chandelier_10
+  - first:
+      213: -3764155294618831419
+    second: Broken_Chandelier_11
+  - first:
+      213: 1156982835776781364
+    second: Broken_Chandelier_12
+  - first:
+      213: 4374659952825413173
+    second: Broken_Chandelier_13
+  - first:
+      213: 1227162865245663220
+    second: Broken_Chandelier_14
+  - first:
+      213: 4063388616713705798
+    second: Broken_Chandelier_15
+  - first:
+      213: 3081344297535345249
+    second: Broken_Chandelier_16
+  - first:
+      213: 7385692138958525069
+    second: Broken_Chandelier_17
+  - first:
+      213: -3181628094470663421
+    second: Broken_Chandelier_18
+  - first:
+      213: 7368813837036068372
+    second: Broken_Chandelier_19
+  - first:
+      213: -1296045891739493391
+    second: Broken_Chandelier_20
+  - first:
+      213: -2237737610327944809
+    second: Broken_Chandelier_21
+  - first:
+      213: 6919688212036955166
+    second: Broken_Chandelier_22
+  - first:
+      213: 8254161753446837531
+    second: Broken_Chandelier_23
+  - first:
+      213: 7256420937502277364
+    second: Broken_Chandelier_24
+  - first:
+      213: -4754853056282157638
+    second: Broken_Chandelier_25
+  - first:
+      213: 696570547006346993
+    second: Broken_Chandelier_26
+  - first:
+      213: 4907174712695495104
+    second: Broken_Chandelier_27
+  - first:
+      213: -3147014149150586151
+    second: Broken_Chandelier_28
+  - first:
+      213: 2288802900850395881
+    second: Broken_Chandelier_29
+  - first:
+      213: -3653691796353546439
+    second: Broken_Chandelier_30
+  - first:
+      213: -8751788820712319816
+    second: Broken_Chandelier_31
+  - first:
+      213: 6077999775887283285
+    second: Broken_Chandelier_32
+  - first:
+      213: 5943056717457885301
+    second: Broken_Chandelier_33
+  - first:
+      213: 1315001065774609576
+    second: Broken_Chandelier_34
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Broken_Chandelier_1
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 704
+        width: 26
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0721af89c66799710800000000000000
+      internalID: 1700520543104143984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broken_Chandelier_2
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 308
+        width: 339
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5e91bf6d5cf3b40800000000000000
+      internalID: 5422270003503818161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

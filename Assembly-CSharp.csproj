@@ -65,6 +65,7 @@
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\ImageScroll.cs" />
     <Compile Include="Assets\Script\ImagesScroll.cs" />
+    <Compile Include="Assets\Script\ObstacleScroll.cs" />
     <Compile Include="Assets\Script\PlayerControl.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity/2019.4.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
