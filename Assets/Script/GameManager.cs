@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     int picemeetCount;  //현재 먹은 고기 조각
     float health;       //현재 체력
     float savehpredNum; //저장된 체력이 다는 속도
+    float windline;
     bool isRunnig;
 
     GameObject Player;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
         isRunnig = false;
         Player = GameObject.Find("Player").gameObject;
+        windline = DashParticle.GetComponent<ParticleSystem>().startLifetime;
         health = MaxHealth;
         savehpredNum = hpreduceNum;
 
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         transform.position = curPos + nextPos;
 
         checkHealth();
+        Debug.Log(windline);
     }
 
     //점수 획득
@@ -126,7 +129,7 @@ public class GameManager : MonoBehaviour
         Mountain_Speed.speed *= 2;
         Cloude_Speed.speed *= 2;
         Pillar_Speed.speed *= 2;
-        DashParticle.SetActive(true);
+        DashParticle.GetComponent<ParticleSystem>().startLifetime *= 2.0f;
         isRunnig = true;
 
         Invoke("OffDashBtn", 5f);
@@ -142,7 +145,8 @@ public class GameManager : MonoBehaviour
         Mountain_Speed.speed /= 2;
         Cloude_Speed.speed /= 2;
         Pillar_Speed.speed /= 2;
-        DashParticle.SetActive(false);
+        //DashParticle.SetActive(false);
+        DashParticle.GetComponent<ParticleSystem>().startLifetime = windline;
         isRunnig = false;
     }
     #endregion

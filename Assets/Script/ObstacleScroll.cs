@@ -13,10 +13,20 @@ public class ObstacleScroll : MonoBehaviour
     int maxIndex;
     int minIndex;
 
+    public Vector3[] spritelist;
+
     private void Awake()
     {
         maxIndex = startIndex;
         minIndex = endIndex;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            spritelist[i] = sprites[i].transform.position;
+        }
     }
 
     private void Update()
@@ -26,12 +36,19 @@ public class ObstacleScroll : MonoBehaviour
             if (sprites[endIndex].activeInHierarchy == false)
                 sprites[endIndex].SetActive(true);
 
-            Vector3 backSpritePos = sprites[startIndex].transform.localPosition;
-            Vector3 frontSpritePos = sprites[endIndex].transform.localPosition;
-            if (isWideCheck)
-                sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * (checkNum / 2.0f);
-            else
-                sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right;
+
+            Debug.Log(sprites[endIndex].transform.position);
+
+            sprites[endIndex].transform.localPosition = spritelist[endIndex] + Vector3.right;
+
+            Debug.Log(spritelist[endIndex]);
+
+            //Vector3 backSpritePos = sprites[startIndex].transform.localPosition;
+            //Vector3 frontSpritePos = sprites[endIndex].transform.localPosition;
+            //if (isWideCheck)
+            //    sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right * (checkNum / 2.0f);
+            //else
+            //    sprites[endIndex].transform.localPosition = backSpritePos + Vector3.right;
 
             checkIndex();
         }
