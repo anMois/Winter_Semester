@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public ImageScroll Mountain_Speed;  //산
     public ImagesScroll Cloude_Speed;   //구름
     public ImagesScroll Pillar_Speed;   //기둥
+    public ObstacleScroll Obs_Speed;    //장애물
     public GameObject DashParticle;
 
     int score;
@@ -59,13 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //move
-        Vector3 curPos = transform.position;
-        Vector3 nextPos = Vector3.left * speed * Time.deltaTime;
-        transform.position = curPos + nextPos;
-
         checkHealth();
-        Debug.Log(windline);
     }
 
     //점수 획득
@@ -91,7 +86,6 @@ public class GameManager : MonoBehaviour
         if (picemeetCount == 3)
         {
             //recovery
-            Debug.Log("고기조각을 3개 먹었습니다.");
             AddHealth(3);
             ScoreAdd(200);
             picemeetCount = 0;
@@ -111,7 +105,6 @@ public class GameManager : MonoBehaviour
                 health = (MaxHealth + 20);
 
             DashBtn.interactable = true;
-            Debug.Log(health);
         }
     }
     #endregion
@@ -123,7 +116,7 @@ public class GameManager : MonoBehaviour
         if (isRunnig)
             return;
 
-        speed *= 2;
+        Obs_Speed.speed *= 2;
         F_Speed.speed *= 2;
         Sky_Speed.speed *= 2;
         Mountain_Speed.speed *= 2;
@@ -139,13 +132,12 @@ public class GameManager : MonoBehaviour
     //대쉬 시간이 지난후
     void OffDashBtn()
     {
-        speed /= 2;
+        Obs_Speed.speed /= 2;
         F_Speed.speed /= 2;
         Sky_Speed.speed /= 2;
         Mountain_Speed.speed /= 2;
         Cloude_Speed.speed /= 2;
         Pillar_Speed.speed /= 2;
-        //DashParticle.SetActive(false);
         DashParticle.GetComponent<ParticleSystem>().startLifetime = windline;
         isRunnig = false;
     }
