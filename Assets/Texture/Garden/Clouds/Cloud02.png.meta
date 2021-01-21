@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: fc02594b6fe7d69478c3ee8ed6fa8633
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2288174632527574371
+    second: Cloud02_0
+  - first:
+      213: -8716425554925269030
+    second: Cloud02_1
+  - first:
+      213: 7145071282754943600
+    second: Cloud02_2
+  - first:
+      213: 3865396007688837038
+    second: Cloud02_3
+  - first:
+      213: -746687298362659019
+    second: Cloud02_4
+  - first:
+      213: 5849406701558619260
+    second: Cloud02_5
+  - first:
+      213: -1786616209564560960
+    second: Cloud02_6
+  - first:
+      213: 2035755657829089055
+    second: Cloud02_7
+  - first:
+      213: -8907457074012641315
+    second: Cloud02_8
+  - first:
+      213: -3295116785778027609
+    second: Cloud02_9
+  - first:
+      213: -896059969791469865
+    second: Cloud02_10
+  - first:
+      213: 5821045982215332909
+    second: Cloud02_11
+  - first:
+      213: 693038907793797691
+    second: Cloud02_12
+  - first:
+      213: -8996659854486278000
+    second: Cloud02_13
+  - first:
+      213: -2210139628874500530
+    second: Cloud02_14
+  - first:
+      213: -8351745548288993369
+    second: Cloud02_15
+  - first:
+      213: 1117182943965332265
+    second: Cloud02_16
+  - first:
+      213: -7364387432047990892
+    second: Cloud02_17
+  - first:
+      213: 3541939856893683617
+    second: Cloud02_18
+  - first:
+      213: 234643896483121906
+    second: Cloud02_19
+  - first:
+      213: -9097190712347709061
+    second: Cloud02_20
+  - first:
+      213: 5958514725053395160
+    second: Cloud02_21
+  - first:
+      213: -8713112141361951660
+    second: Cloud02_22
+  - first:
+      213: -6506612892088678341
+    second: Cloud02_23
+  - first:
+      213: -6224522960444296039
+    second: Cloud02_24
+  - first:
+      213: -519663983112412689
+    second: Cloud02_25
+  - first:
+      213: 5921726229631928461
+    second: Cloud02_26
+  - first:
+      213: 5474107519683514430
+    second: Cloud02_27
+  - first:
+      213: -5575380636460417060
+    second: Cloud02_28
+  - first:
+      213: -3528495011580967407
+    second: Cloud02_29
+  - first:
+      213: -1489265406019397480
+    second: Cloud02_30
+  - first:
+      213: 5132438388253408218
+    second: Cloud02_31
+  - first:
+      213: 7570418303175522057
+    second: Cloud02_32
+  - first:
+      213: -858189087623841275
+    second: Cloud02_33
+  - first:
+      213: 527580886716579150
+    second: Cloud02_34
+  - first:
+      213: -5915132213738920680
+    second: Cloud02_35
+  - first:
+      213: -7080777505545600169
+    second: Cloud02_36
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cloud02_0
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 46
+        width: 462
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365bddb74ba31cf10800000000000000
+      internalID: 2288174632527574371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
