@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
-            RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 2f, LayerMask.GetMask("Floor"));
+            RaycastHit2D rayhit = Physics2D.Raycast(rigid.position, Vector3.down, 4f, LayerMask.GetMask("Floor"));
             if (rayhit.collider != null)
             {
                 jumpcount = Maxjumpcount;
@@ -128,7 +128,8 @@ public class PlayerControl : MonoBehaviour
 
     void OnPlayerMode()
     {
-        GameManager.instance.OnPlayerMode();
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
     public void OnJump()
@@ -156,12 +157,12 @@ public class PlayerControl : MonoBehaviour
                 break;
             case "BigFood":
                 GameManager.instance.AddHealth(20);
-                GameManager.instance.ScoreAdd(300);
+                GameManager.instance.ScoreAdd(250);
                 //Destroy(collision.gameObject);
                 collision.gameObject.SetActive(false);
                 break;
             case "Jelly":
-                GameManager.instance.ScoreAdd(100);
+                GameManager.instance.ScoreAdd(75);
                 //Destroy(collision.gameObject);
                 collision.gameObject.SetActive(false);
                 break;
@@ -179,7 +180,7 @@ public class PlayerControl : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.instance.ScoreAdd(100);
+                    GameManager.instance.ScoreAdd(500);
                     //Destroy(collision.gameObject);
                     collision.gameObject.SetActive(false);
                 }

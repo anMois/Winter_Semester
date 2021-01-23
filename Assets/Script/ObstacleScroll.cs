@@ -7,11 +7,9 @@ public class ObstacleScroll : MonoBehaviour
     public float speed;
     public float Find_x;
 
-
     GameObject lastObj;
     GameObject ObsObj;
     GameObject FoodObj;
-
 
     private void Awake()
     {
@@ -37,17 +35,23 @@ public class ObstacleScroll : MonoBehaviour
         if (lastObj.transform.position.x < Find_x*(-1))
         {
             //장애물 스폰
-            transform.localPosition = new Vector3(8.0f, 0, 0);
+            transform.localPosition = new Vector3(12.0f, 0, 0);
             gameObject.SetActive(true);
             for (int i = 0; i < ObsObj.transform.childCount; i++)
             {
                 if (ObsObj.transform.GetChild(i).gameObject.activeInHierarchy == false)
+                {
                     ObsObj.transform.GetChild(i).gameObject.SetActive(true);
+                    ObsObj.transform.GetChild(i).gameObject.GetComponent<Collider2D>().isTrigger = true;
+                }
             }
             for (int i = 0; i < FoodObj.transform.childCount; i++)
             {
                 if (FoodObj.transform.GetChild(i).gameObject.activeInHierarchy == false)
+                {
                     FoodObj.transform.GetChild(i).gameObject.SetActive(true);
+                    FoodObj.transform.GetChild(i).gameObject.GetComponent<Collider2D>().isTrigger = true;
+                }
             }
         }
     }
